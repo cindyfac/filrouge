@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b645d8057684669a9dcc0f05de65eec" Name="Diagram1">
+        <EntityTypeShape EntityType="filrougeModel.C_Contient" Width="1.5" PointX="2.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Adresse" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.bon_de_livraison" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Client" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Commande" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Commercial" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Contient" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Fournisseur" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Fournit" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Produits" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.Rubrique" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="filrougeModel.TVA" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="filrougeModel.FK_bon_de_livraison_Adresse_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Client_Adresse_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Commande_Adresse_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_bon_de_livraison_Commande_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Client_Commercial_numero" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Commande_Client_numero" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Commande_TVA_numero" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Contient_Produit_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Fournit_Fournisseur_code" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Fournit_Produit_reference" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_produits_Rubrique_identifiant" ManuallyRouted="false" />
+        <AssociationConnector Association="filrougeModel.FK_Rubrique_Rubrique_identifiant_1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
