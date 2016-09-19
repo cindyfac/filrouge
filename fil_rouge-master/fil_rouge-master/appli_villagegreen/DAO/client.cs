@@ -26,6 +26,7 @@ namespace DAO
         public int Client_coefficient { get; set; }
         public int Commercial_numero { get; set; }
         public int Adresse_id { get; set; }
+        public bool Client_statut { get; set; }
         
         
         public Nullable<int> Client_siret { get; set; }   

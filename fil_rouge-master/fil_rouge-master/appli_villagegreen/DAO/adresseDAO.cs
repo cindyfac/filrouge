@@ -36,12 +36,10 @@ namespace DAO
             {
                 mavariable.adresse_rue = Convert.ToString(resultat["Adresse_rue"]);
                 mavariable.adresse_codepostal = Convert.ToInt32(resultat["Adresse_codepostal"]);
-                mavariable.adresse_ville = Convert.ToString(resultat["Adresse_ville"]);
-                
+                mavariable.adresse_ville = Convert.ToString(resultat["Adresse_ville"]);                
                 mavariable.adresse_mail = Convert.ToString(resultat["Adresse_mail"]);
                 mavariable.adresse_telephone = Convert.ToString(resultat["Adresse_telephone"]);
-
-               
+                mavariable.adresse_id = Convert.ToInt32(resultat["adresse_id"]);
             }
             maconnexion.Close();
             return mavariable;
@@ -61,6 +59,25 @@ namespace DAO
             int adresseId = (int)marequete.ExecuteScalar();
             maconnexion.Close();
             return adresseId;
+        }
+
+        //-----------------------------------------------------------------
+        //update
+        public void updateadresse(adresseclient updateadresse)
+        {
+            maconnexion.Open();
+            SqlCommand marequete = new SqlCommand("update Adresse set Adresse_rue=@rue, Adresse_codepostal=@codepostal, Adresse_ville=@ville, Adresse_mail=@mail, Adresse_telephone=@telephone where Adresse_id =@id", maconnexion);
+            marequete.Parameters.AddWithValue("@rue", updateadresse.adresse_rue);
+            marequete.Parameters.AddWithValue("@codepostal", updateadresse.adresse_codepostal);
+            marequete.Parameters.AddWithValue("@ville", updateadresse.adresse_ville);
+            marequete.Parameters.AddWithValue("@mail", updateadresse.adresse_mail);
+            marequete.Parameters.AddWithValue("@telephone", updateadresse.adresse_telephone);
+            marequete.Parameters.AddWithValue("@id", updateadresse.adresse_id);
+            marequete.ExecuteNonQuery();
+           
+            maconnexion.Close();
+       
+
         }
     }
 }

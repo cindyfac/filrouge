@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_client));
             this.lb_client = new System.Windows.Forms.ListBox();
             this.btn_modifier = new System.Windows.Forms.Button();
@@ -69,7 +70,9 @@
             this.cb_recherchenumero = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbx_coordonnees.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_client
@@ -102,6 +105,7 @@
             this.btn_supprimer.TabIndex = 2;
             this.btn_supprimer.Text = "Supprimer";
             this.btn_supprimer.UseVisualStyleBackColor = true;
+            this.btn_supprimer.Click += new System.EventHandler(this.btn_supprimer_Click);
             // 
             // btn_ajouter
             // 
@@ -310,6 +314,7 @@
             this.tb_nom.Name = "tb_nom";
             this.tb_nom.Size = new System.Drawing.Size(254, 20);
             this.tb_nom.TabIndex = 3;
+            this.tb_nom.Validating += new System.ComponentModel.CancelEventHandler(this.tb_nom_Validating);
             // 
             // gpbx_coordonnees
             // 
@@ -465,6 +470,10 @@
             this.label11.TabIndex = 45;
             this.label11.Text = "Rechercher par référence";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // Form_client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -490,6 +499,7 @@
             this.Load += new System.EventHandler(this.Form_client_Load);
             this.gpbx_coordonnees.ResumeLayout(false);
             this.gpbx_coordonnees.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -537,5 +547,6 @@
         private System.Windows.Forms.ComboBox cb_recherchenumero;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

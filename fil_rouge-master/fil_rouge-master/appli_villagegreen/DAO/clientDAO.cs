@@ -49,14 +49,34 @@ namespace DAO
         //modifier
         public void updateclient (Client monclient)
         {
-            maconnexion.Open();
-            SqlCommand marequete = new SqlCommand ("update Client set (Client_nom=@nom, Client_prenom=@prenom, Client_categorie=@categorie, Client_coefficient=@coefficient, Client_siret=@siret) where Client_id=@id", maconnexion);
-            marequete.Parameters.AddWithValue("@nom", monclient.Client_nom);
-            marequete.Parameters.AddWithValue("@prenom", monclient.Client_prenom);
-            marequete.Parameters.AddWithValue("@categorie", monclient.Client_categorie);
-            marequete.Parameters.AddWithValue("@coefficient", monclient.Client_coefficient);
-            marequete.Parameters.AddWithValue("@siret", monclient.Client_siret);
-            marequete.ExecuteNonQuery();
+            if (monclient.Client_categorie)
+            {
+                maconnexion.Open();
+                SqlCommand marequete = new SqlCommand("update Client set Client_nom=@nom, Client_prenom=@prenom, Client_categorie=@categorie, Client_coefficient=@coefficient, Commercial_id=@commercial, Client_statut =@statut where Client_id=@id", maconnexion);
+                marequete.Parameters.AddWithValue("@nom", monclient.Client_nom);
+                marequete.Parameters.AddWithValue("@prenom", monclient.Client_prenom);
+                marequete.Parameters.AddWithValue("@categorie", monclient.Client_categorie);
+                marequete.Parameters.AddWithValue("@coefficient", monclient.Client_coefficient);
+                marequete.Parameters.AddWithValue("@commercial", monclient.Commercial_numero);
+                marequete.Parameters.AddWithValue("@statut", monclient.Client_statut);
+               
+                marequete.Parameters.AddWithValue("@id", monclient.Client_id);
+                marequete.ExecuteNonQuery();
+            }
+            else
+            {
+                SqlCommand marequete = new SqlCommand("update Client set Client_nom=@nom, Client_prenom=@prenom, Client_categorie=@categorie, Client_coefficient=@coefficient, Commercial_id=@commercial, Client_siret=@siret where Client_id=@id", maconnexion);
+                marequete.Parameters.AddWithValue("@nom", monclient.Client_nom);
+                marequete.Parameters.AddWithValue("@prenom", monclient.Client_prenom);
+                marequete.Parameters.AddWithValue("@categorie", monclient.Client_categorie);
+                marequete.Parameters.AddWithValue("@coefficient", monclient.Client_coefficient);
+                marequete.Parameters.AddWithValue("@siret", monclient.Client_siret);
+                marequete.Parameters.AddWithValue("@commercial", monclient.Commercial_numero);
+                marequete.Parameters.AddWithValue("@statut", monclient.Client_statut);
+
+                marequete.Parameters.AddWithValue("@id", monclient.Client_id);
+                marequete.ExecuteNonQuery();
+            }
             maconnexion.Close();
         }
         //-------------------------------------------------------------------------------
@@ -64,8 +84,9 @@ namespace DAO
         public void deleteclient (int id)
         {
             maconnexion.Open();
-            SqlCommand marequete = new SqlCommand("delete from Client where Client_id =@id", maconnexion);
+            SqlCommand marequete = new SqlCommand("update Client set Client_statut=@statut where Client_id =@id", maconnexion);
             marequete.Parameters.AddWithValue("@id", id);
+            marequete.Parameters.AddWithValue("@statut", 0);
             marequete.ExecuteNonQuery();
             maconnexion.Close();
           
@@ -108,7 +129,7 @@ namespace DAO
         public List<Client> List()
         {
             maconnexion.Open();
-            SqlCommand marequete = new SqlCommand("select * from Client", maconnexion);
+            SqlCommand marequete = new SqlCommand("select * from Client where Client_statut = 1", maconnexion);
             SqlDataReader resultat = marequete.ExecuteReader();
             //declaration d'une variable de type liste pour stocker les résultats
             List <Client> maliste = new List<Client>();
@@ -129,5 +150,7 @@ namespace DAO
             return maliste;  
             
         }
+        //------------------------------------------
+       
     }
 }
