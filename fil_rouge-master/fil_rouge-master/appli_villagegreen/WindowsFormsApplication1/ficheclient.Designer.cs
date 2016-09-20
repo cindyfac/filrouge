@@ -154,7 +154,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(137, 229);
+            this.label4.Location = new System.Drawing.Point(137, 233);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 11;
@@ -175,6 +175,7 @@
             this.tb_mail.Name = "tb_mail";
             this.tb_mail.Size = new System.Drawing.Size(254, 20);
             this.tb_mail.TabIndex = 8;
+            this.tb_mail.Validating += new System.ComponentModel.CancelEventHandler(this.tb_mail_Validating);
             // 
             // rb_particulier
             // 
@@ -203,10 +204,11 @@
             // 
             // tb_ville
             // 
-            this.tb_ville.Location = new System.Drawing.Point(137, 245);
+            this.tb_ville.Location = new System.Drawing.Point(137, 247);
             this.tb_ville.Name = "tb_ville";
             this.tb_ville.Size = new System.Drawing.Size(137, 20);
             this.tb_ville.TabIndex = 7;
+            this.tb_ville.Validating += new System.ComponentModel.CancelEventHandler(this.tb_ville_Validating);
             // 
             // tb_codepostal
             // 
@@ -214,6 +216,7 @@
             this.tb_codepostal.Name = "tb_codepostal";
             this.tb_codepostal.Size = new System.Drawing.Size(93, 20);
             this.tb_codepostal.TabIndex = 6;
+            this.tb_codepostal.Validating += new System.ComponentModel.CancelEventHandler(this.tb_codepostal_Validating);
             // 
             // tb_telephone
             // 
@@ -221,6 +224,7 @@
             this.tb_telephone.Name = "tb_telephone";
             this.tb_telephone.Size = new System.Drawing.Size(254, 20);
             this.tb_telephone.TabIndex = 9;
+            this.tb_telephone.Validating += new System.ComponentModel.CancelEventHandler(this.tb_telephone_Validating);
             // 
             // label8
             // 
@@ -408,6 +412,7 @@
             this.tb_prenom.Name = "tb_prenom";
             this.tb_prenom.Size = new System.Drawing.Size(254, 20);
             this.tb_prenom.TabIndex = 4;
+            this.tb_prenom.Validating += new System.ComponentModel.CancelEventHandler(this.tb_prenom_Validating);
             // 
             // label6
             // 
@@ -424,6 +429,7 @@
             this.tb_siret.Name = "tb_siret";
             this.tb_siret.Size = new System.Drawing.Size(152, 20);
             this.tb_siret.TabIndex = 1;
+            this.tb_siret.Validating += new System.ComponentModel.CancelEventHandler(this.tb_siret_Validating);
             // 
             // lbl_siret
             // 

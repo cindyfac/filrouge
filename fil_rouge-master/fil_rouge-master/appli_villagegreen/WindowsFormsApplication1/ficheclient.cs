@@ -213,7 +213,7 @@ namespace WindowsFormsApplication1
             {
                 nouveauclient.Client_nom = tb_nom.Text;
                 nouveauclient.Client_prenom = tb_prenom.Text;
-                nouveauclient.Client_siret = Convert.ToInt32(tb_siret.Text);
+                nouveauclient.Client_siret = tb_siret.Text;
                 nouveauclient.Commercial_numero = (int)cb_commercial.SelectedValue;
                 nouveauclient.Adresse_id = idadresse;
             }
@@ -255,7 +255,7 @@ namespace WindowsFormsApplication1
             {
                 UpdateClient.Client_nom = tb_nom.Text;
                 UpdateClient.Client_prenom = tb_prenom.Text;
-                UpdateClient.Client_siret = Convert.ToInt32(tb_siret.Text);
+                UpdateClient.Client_siret = tb_siret.Text;
                 UpdateClient.Commercial_numero = (int)cb_commercial.SelectedValue;
                 UpdateClient.Client_id = Convert.ToInt32(tb_reference.Text);
             }
@@ -305,9 +305,51 @@ namespace WindowsFormsApplication1
 
         private void tb_nom_Validating(object sender, CancelEventArgs e)
         {
-            mesclasses xxx = new mesclasses();
-            xxx.VerifString(tb_nom.Text, errorProvider1, tb_nom);
+            mesclasses fonction = new mesclasses();
+            fonction.VerifString(tb_nom.Text, errorProvider1, tb_nom);
         }
-        
+
+        private void tb_prenom_Validating(object sender, CancelEventArgs e)
+        {
+            mesclasses fonction = new mesclasses();
+            fonction.VerifString(tb_prenom.Text, errorProvider1, tb_prenom);
+        }
+
+        private void tb_codepostal_Validating(object sender, CancelEventArgs e)
+        {
+            mesclasses fonction = new mesclasses();
+            fonction.VerifInt(tb_codepostal.Text, 5, tb_codepostal, errorProvider1);
+        }
+
+   
+        private void tb_siret_Validating(object sender, CancelEventArgs e)
+        {
+            if(rb_professionnel.Checked)
+            {
+                mesclasses fonction = new mesclasses();
+                fonction.VerifInt(tb_siret.Text, 14, tb_siret, errorProvider1);
+            }
+                        
+        }
+
+        private void tb_ville_Validating(object sender, CancelEventArgs e)
+        {
+            mesclasses fonction = new mesclasses();
+            fonction.VerifString(tb_ville.Text, errorProvider1, tb_ville);
+        }
+
+        private void tb_mail_Validating(object sender, CancelEventArgs e)
+        {
+            mesclasses fonction = new mesclasses();
+            fonction.VerifMail(tb_mail.Text, errorProvider1, tb_mail);
+        }
+
+
+        private void tb_telephone_Validating(object sender, CancelEventArgs e)
+        {
+            mesclasses fonction = new mesclasses();
+            fonction.VerifInt(tb_telephone.Text, 10, tb_telephone, errorProvider1);
+        }
     }
 }
+

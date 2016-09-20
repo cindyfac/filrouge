@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace DAO
 {
-   public class mesclasses
+    public class mesclasses
     {
         public bool monbooleen = false;
         public void VerifString(string ChaineCaractere, ErrorProvider erreur, TextBox txt_box)
@@ -26,9 +26,32 @@ namespace DAO
                 erreur.SetError(txt_box, "Format incorrect");
             }
         }
-        public void VerifInt(string ChaineCaractere, int taille, TextBox txt_box, ErrorProvider erreur )
+        public void VerifInt(string ChaineCaractere, int taille, TextBox txt_box, ErrorProvider erreur)
         {
-            Regex regex = new Regex("^[0-9]{" + taille + "}");
+            if(ChaineCaractere.Length == taille)
+            {
+                Regex regex = new Regex("^[0-9]{" + taille + "}");
+                if (regex.IsMatch(ChaineCaractere))
+                {
+                    monbooleen = true;
+                    erreur.SetError(txt_box, "");//ne s'affiche pas
+                }
+                else
+                {
+                    monbooleen = false;
+                    erreur.SetError(txt_box, "Format incorrect");
+                }
+            }
+            else
+            {
+                monbooleen = false;
+                erreur.SetError(txt_box, "Format incorrect");
+            }
+           
+        }
+        public void VerifMail(string ChaineCaractere, ErrorProvider erreur, TextBox txt_box)
+        {
+            Regex regex = new Regex("^[a-z-A-Z_]{2,50}@[a-zA-Z_]+[.][a-zA-Z]{2,3}$");
             if (regex.IsMatch(ChaineCaractere))
             {
                 monbooleen = true;
@@ -39,7 +62,7 @@ namespace DAO
                 monbooleen = false;
                 erreur.SetError(txt_box, "Format incorrect");
             }
-        }
 
+        }
     }
 }

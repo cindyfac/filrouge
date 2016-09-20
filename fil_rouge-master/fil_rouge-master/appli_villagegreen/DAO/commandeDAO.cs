@@ -58,7 +58,36 @@ namespace DAO
         }
         //-------------------------------------------------------------------
         //afficher
-        public List<Commande> List(int id)
+
+        public List<Commande> ListCommande()//charger le datagridview
+        {
+            maconnexion.Open();
+            SqlCommand marequete = new SqlCommand("select * from Commande join Client on Commande.Client_id = Client.Client_id", maconnexion);
+            SqlDataReader resultat = marequete.ExecuteReader();
+            //declaration d'une variable de type liste pour stocker les résultats
+            List<Commande> maliste = new List<Commande>();
+
+            while (resultat.Read())
+            {
+                Commande macommande = new Commande();
+                macommande.Commande_id = Convert.ToInt32(resultat["Commande_id"]);
+                macommande.Commande_etat = Convert.ToString(resultat["Commande_etat"]);
+                macommande.Commande_modepaiement = Convert.ToString(resultat["Commande_modepaiement"]);
+                macommande.Commande_paiement = Convert.ToBoolean(resultat["Commande_paiement"]);
+                macommande.Commande_date = Convert.ToDateTime(resultat["Commande_date"]);
+                macommande.Commande_totalHT = Convert.ToInt32(resultat["Commande_totalHT"]);
+                macommande.Commande_totalTTC = Convert.ToInt32(resultat["Commande_totalTTC"]);
+                macommande.Client_id = Convert.ToInt32(resultat["Client_id"]);
+                macommande.NomClient = Convert.ToString(resultat["Client_nom"]);
+                maliste.Add(macommande);
+            }
+            resultat.Close();
+            maconnexion.Close();
+            return maliste;
+
+        }
+
+        public List<Commande> List(int id)//afficher dans la liste de la vue ficheclient
         {
             maconnexion.Open();
             SqlCommand marequete = new SqlCommand("select * from Commande where Client_id =@id", maconnexion);
@@ -77,6 +106,7 @@ namespace DAO
                 macommande.Commande_date = Convert.ToDateTime(resultat["Commande_date"]);
                 macommande.Commande_totalHT = Convert.ToInt32(resultat["Commande_totalHT"]);
                 macommande.Commande_totalTTC = Convert.ToInt32(resultat["Commande_totalTTC"]);
+                macommande.Client_id = Convert.ToInt32(resultat["Client_id"]);               
                 maliste.Add(macommande);
             }
             resultat.Close();
@@ -84,10 +114,106 @@ namespace DAO
             return maliste;
 
         }
-    
-    //---------------------------------------------------------------------------
+        //-----------------------------
+        public List<Commande> ListCommandeClient()//charger le datagridview
+        {
+            maconnexion.Open();
+            SqlCommand marequete = new SqlCommand("select distinct Client_id from Commande", maconnexion);
+            SqlDataReader resultat = marequete.ExecuteReader();
+            //declaration d'une variable de type liste pour stocker les résultats
+            List<Commande> maliste = new List<Commande>();
+            while (resultat.Read())
+            {
+                Commande macommande = new Commande();
+                macommande.Client_id = Convert.ToInt32(resultat["Client_id"]);               
+                maliste.Add(macommande);
+            }
+            resultat.Close();
+            maconnexion.Close();
+            return maliste;
+        }
+
+        //---------------------------------------
+        public List<Commande> ListRefCommande()
+        {
+            maconnexion.Open();
+            SqlCommand marequete = new SqlCommand("select distinct Commande_id from Commande", maconnexion);
+            SqlDataReader resultat = marequete.ExecuteReader();
+            //declaration d'une variable de type liste pour stocker les résultats
+            List<Commande> maliste = new List<Commande>();
+            while (resultat.Read())
+            {
+                Commande macommande = new Commande();
+                macommande.Commande_id = Convert.ToInt32(resultat["Commande_id"]);
+                maliste.Add(macommande);
+            }
+            resultat.Close();
+            maconnexion.Close();
+            return maliste;
+
+        }
+
+        public List<Commande> ListByIdClient(int id)// affiche en fonction de l'id du client
+        {
+            maconnexion.Open();
+            SqlCommand marequete = new SqlCommand("select * from Commande join Client on Commande.Client_id = Client.Client_id where Client_id =@id", maconnexion);
+            marequete.Parameters.AddWithValue("@id", id);
+            SqlDataReader resultat = marequete.ExecuteReader();
+            //declaration d'une variable de type liste pour stocker les résultats
+            List<Commande> maliste = new List<Commande>();
+
+            while (resultat.Read())
+            {
+                Commande macommande = new Commande();
+                macommande.Commande_id = Convert.ToInt32(resultat["Commande_id"]);
+                macommande.Commande_etat = Convert.ToString(resultat["Commande_etat"]);
+                macommande.Commande_modepaiement = Convert.ToString(resultat["Commande_modepaiement"]);
+                macommande.Commande_paiement = Convert.ToBoolean(resultat["Commande_paiement"]);
+                macommande.Commande_date = Convert.ToDateTime(resultat["Commande_date"]);
+                macommande.Commande_totalHT = Convert.ToInt32(resultat["Commande_totalHT"]);
+                macommande.Commande_totalTTC = Convert.ToInt32(resultat["Commande_totalTTC"]);
+                macommande.Client_id = Convert.ToInt32(resultat["Client_id"]);
+                macommande.NomClient = Convert.ToString(resultat["Client_nom"]);
+                maliste.Add(macommande);
+            }
+            resultat.Close();
+            maconnexion.Close();
+            return maliste;
+
+        }
+
+        public List<Commande> ListByRefCommande(int id) // affiche en fonction de la ref de commande
+        {
+            maconnexion.Open();
+            SqlCommand marequete = new SqlCommand("select * from Commande join Client on Commande.Client_id = Client.Client_id where Client_id =@id", maconnexion);
+            marequete.Parameters.AddWithValue("@id", id);
+            SqlDataReader resultat = marequete.ExecuteReader();
+            //declaration d'une variable de type liste pour stocker les résultats
+            List<Commande> maliste = new List<Commande>();
+
+            while (resultat.Read())
+            {
+                Commande macommande = new Commande();
+                macommande.Commande_id = Convert.ToInt32(resultat["Commande_id"]);
+                macommande.Commande_etat = Convert.ToString(resultat["Commande_etat"]);
+                macommande.Commande_modepaiement = Convert.ToString(resultat["Commande_modepaiement"]);
+                macommande.Commande_paiement = Convert.ToBoolean(resultat["Commande_paiement"]);
+                macommande.Commande_date = Convert.ToDateTime(resultat["Commande_date"]);
+                macommande.Commande_totalHT = Convert.ToInt32(resultat["Commande_totalHT"]);
+                macommande.Commande_totalTTC = Convert.ToInt32(resultat["Commande_totalTTC"]);
+                macommande.Client_id = Convert.ToInt32(resultat["Client_id"]);
+                macommande.NomClient = Convert.ToString(resultat["Client_nom"]);
+                maliste.Add(macommande);
+            }
+            resultat.Close();
+            maconnexion.Close();
+            return maliste;
+
+        }
+
+        //---------------------------------------------------------------------------
         //rechercher
-         public Commande findcommande (int id)
+        public Commande findcommande (int id)
         {
             maconnexion.Open();
             //execution de la requete (uniquement en reader)

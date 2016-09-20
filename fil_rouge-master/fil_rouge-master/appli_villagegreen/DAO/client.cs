@@ -29,7 +29,7 @@ namespace DAO
         public bool Client_statut { get; set; }
         
         
-        public Nullable<int> Client_siret { get; set; }   
+        public string Client_siret { get; set; }   
       
         public virtual ICollection<Commande> Commande { get; set; }
     }

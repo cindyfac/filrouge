@@ -25,6 +25,14 @@ namespace DAO
         public int Adresse_id { get; set; }
         public int Tva_id { get; set; }
         public Nullable<System.DateTime> Commande_datepaiement { get; set; }
-    
+        public string NomClient { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == DBNull.Value) return false;
+            Commande c = (Commande)obj;
+            return Commande_id == c.Commande_id;
+        }
+
     }
 }

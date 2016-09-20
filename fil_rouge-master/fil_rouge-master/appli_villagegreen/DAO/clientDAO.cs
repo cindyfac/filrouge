@@ -49,9 +49,10 @@ namespace DAO
         //modifier
         public void updateclient (Client monclient)
         {
+            maconnexion.Open();
             if (monclient.Client_categorie)
             {
-                maconnexion.Open();
+                
                 SqlCommand marequete = new SqlCommand("update Client set Client_nom=@nom, Client_prenom=@prenom, Client_categorie=@categorie, Client_coefficient=@coefficient, Commercial_id=@commercial, Client_statut =@statut where Client_id=@id", maconnexion);
                 marequete.Parameters.AddWithValue("@nom", monclient.Client_nom);
                 marequete.Parameters.AddWithValue("@prenom", monclient.Client_prenom);
@@ -114,11 +115,11 @@ namespace DAO
                 mavariable.Commercial_numero = Convert.ToInt32(resultat["Commercial_id"]);
                 if (resultat["Client_siret"] == DBNull.Value)
                 {
-                    mavariable.Client_siret = 0;
+                    mavariable.Client_siret = "";
                 }
                 else
                 {
-                    mavariable.Client_siret = Convert.ToInt32(resultat["Client_siret"]);
+                    mavariable.Client_siret = Convert.ToString(resultat["Client_siret"]);
                 }
             }
             maconnexion.Close();

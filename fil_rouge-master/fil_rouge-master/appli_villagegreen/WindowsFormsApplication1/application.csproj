@@ -104,6 +104,16 @@
     <Compile Include="validationcommande.Designer.cs">
       <DependentUpon>validationcommande.cs</DependentUpon>
     </Compile>
+    <Compile Include="villagegreenDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>villagegreenDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="villagegreenDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>villagegreenDataSet1.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ajoutarticle.resx">
       <DependentUpon>ajoutarticle.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +159,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="villagegreenDataSet.xsc">
+      <DependentUpon>villagegreenDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="villagegreenDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>villagegreenDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="villagegreenDataSet.xss">
+      <DependentUpon>villagegreenDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="villagegreenDataSet1.xsc">
+      <DependentUpon>villagegreenDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="villagegreenDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>villagegreenDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="villagegreenDataSet1.xss">
+      <DependentUpon>villagegreenDataSet1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
