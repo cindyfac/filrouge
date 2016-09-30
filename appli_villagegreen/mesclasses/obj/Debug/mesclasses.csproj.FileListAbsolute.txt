@@ -1,0 +1,5 @@
+C:\Users\afpa\Desktop\appli_villagegreen\appli_villagegreen\mesclasses\bin\Debug\mesclasses.dll
+C:\Users\afpa\Desktop\appli_villagegreen\appli_villagegreen\mesclasses\bin\Debug\mesclasses.pdb
+C:\Users\afpa\Desktop\appli_villagegreen\appli_villagegreen\mesclasses\obj\Debug\mesclasses.csprojResolveAssemblyReference.cache
+C:\Users\afpa\Desktop\appli_villagegreen\appli_villagegreen\mesclasses\obj\Debug\mesclasses.dll
+C:\Users\afpa\Desktop\appli_villagegreen\appli_villagegreen\mesclasses\obj\Debug\mesclasses.pdb
