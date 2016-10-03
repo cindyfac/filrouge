@@ -98,6 +98,7 @@
             this.dgv_commande.Size = new System.Drawing.Size(591, 240);
             this.dgv_commande.TabIndex = 106;
             this.dgv_commande.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_commande_CellContentDoubleClick);
+            this.dgv_commande.Sorted += new System.EventHandler(this.dgv_commande_Sorted);
             // 
             // label1
             // 
@@ -148,11 +149,14 @@
             // 
             this.cb_etatcom.FormattingEnabled = true;
             this.cb_etatcom.Items.AddRange(new object[] {
-            "En cours de livraison"});
+            "en cours de livraison",
+            "en attente",
+            "en cours de préparation"});
             this.cb_etatcom.Location = new System.Drawing.Point(20, 163);
             this.cb_etatcom.Name = "cb_etatcom";
             this.cb_etatcom.Size = new System.Drawing.Size(121, 21);
             this.cb_etatcom.TabIndex = 114;
+            this.cb_etatcom.SelectedIndexChanged += new System.EventHandler(this.cb_etatcom_SelectedIndexChanged);
             // 
             // label4
             // 

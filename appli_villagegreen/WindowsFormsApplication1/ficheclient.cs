@@ -350,6 +350,11 @@ namespace WindowsFormsApplication1
             mesclasses fonction = new mesclasses();
             fonction.VerifInt(tb_telephone.Text, 10, tb_telephone, errorProvider1);
         }
+
+        private void cb_recherchenom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

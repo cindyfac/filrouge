@@ -448,6 +448,7 @@
             this.cb_recherchenom.Name = "cb_recherchenom";
             this.cb_recherchenom.Size = new System.Drawing.Size(269, 21);
             this.cb_recherchenom.TabIndex = 38;
+            this.cb_recherchenom.SelectedIndexChanged += new System.EventHandler(this.cb_recherchenom_SelectedIndexChanged);
             this.cb_recherchenom.SelectedValueChanged += new System.EventHandler(this.cb_recherchenom_SelectedValueChanged);
             // 
             // cb_recherchenumero

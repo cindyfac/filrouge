@@ -56,7 +56,10 @@ namespace WindowsFormsApplication1
             dgv_commande.Columns[1].Width = 150;
             dgv_commande.Columns[11].DisplayIndex = 1;
             dgv_commande.Columns[6].DefaultCellStyle.Format= "c";
+            dgv_commande.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_commande.MultiSelect = false;
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -72,5 +75,15 @@ namespace WindowsFormsApplication1
         {
           
         }
+
+        private void cb_etatcom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgv_commande_Sorted(object sender, EventArgs e)
+        {
+        
+    }
     }
 }
